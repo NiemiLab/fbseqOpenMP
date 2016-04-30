@@ -39,6 +39,7 @@ void tauSample(SEXP hh, chain_t *hd, chain_t *dd){
   serial_reduce_aux(dd);
 
   tau_kernel2(dd, li(hh, "tauSampler")[0]);
+  Rprintf("    tau\n");
 }
 
 #endif // GIBBS_TAU_H

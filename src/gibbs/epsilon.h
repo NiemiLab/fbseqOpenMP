@@ -33,6 +33,7 @@ void epsilon_kernel1(chain_t *dd, int sampler){
 void epsilonSample(SEXP hh, chain_t *hd, chain_t *dd){
   if(!(vi(le(hh, "parameter_sets_update"), "epsilon"))) return;
   epsilon_kernel1(dd, li(hh, "epsilonSampler")[0]);
+  Rprintf("    epsilon\n");
 }
 
 #endif // GIBBS_EPSILON_H

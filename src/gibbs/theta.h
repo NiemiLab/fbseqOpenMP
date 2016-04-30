@@ -40,6 +40,7 @@ void thetaSample(SEXP hh, chain_t *hd, chain_t *dd){
 
     theta_kernel3(dd, A0, B0, l);
   }
+  Rprintf("    theta\n");
 }
 
 #endif // GIBBS_THETA_H

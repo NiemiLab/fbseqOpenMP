@@ -40,6 +40,7 @@ void nuSample(SEXP hh, chain_t *hd, chain_t *dd){
   serial_reduce_aux(dd);
 
   nu_kernel2(dd, li(hh, "nuSampler")[0]);
+  Rprintf("    nu\n");
 }
 
 #endif // GIBBS_NU_H

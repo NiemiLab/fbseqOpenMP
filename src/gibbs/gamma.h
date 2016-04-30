@@ -37,6 +37,7 @@ void gamma_kernel1(chain_t *dd, int sampler){
 void gammaSample(SEXP hh, chain_t *hd, chain_t *dd){
   if(!(vi(le(hh, "parameter_sets_update"), "gamma"))) return;
   gamma_kernel1(dd, li(hh, "gammaSampler")[0]);
+  Rprintf("    gamma\n");
 }
 
 #endif // GIBBS_GAMMA_H

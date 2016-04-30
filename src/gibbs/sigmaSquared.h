@@ -45,6 +45,7 @@ void sigmaSquaredSample(SEXP hh, chain_t *hd, chain_t *dd){
 
     sigmaSquared_kernel2(dd, l, li(hh, "sigmaSquaredSampler")[0]);
   }
+  Rprintf("    sigmaSquared\n");
 }
 
 #endif // GIBBS_SIGMASQUARED_H

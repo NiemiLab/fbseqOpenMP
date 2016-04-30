@@ -53,6 +53,7 @@ void xiSample(SEXP hh, chain_t *hd, chain_t *dd){
   if(!(vi(le(hh, "parameter_sets_update"), "xi"))) return;
   for(l = 0; l < li(hh, "L")[0]; ++l)
     xi_kernel1(dd, li(hh, "priors")[l], l, li(hh, "xiSampler")[0]);
+  Rprintf("    xi\n");
 }
 
 #endif // GIBBS_XI_H

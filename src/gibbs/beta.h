@@ -59,6 +59,7 @@ void betaSample(SEXP hh, chain_t *hd, chain_t *dd){
     l = li(hh, "effects_update_beta")[i] - 1;
     beta_kernel1(dd, l, li(hh, "betaSampler")[0]);
   }
+  Rprintf("    beta\n");
 }
 
 #endif // GIBBS_BETA_H
