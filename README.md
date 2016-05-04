@@ -4,7 +4,7 @@ The [`fbseqSerial`](https://github.com/wlandau/fbseqSerial) package is an intern
 
 # System requirements
 
-- R $\ge$ 3.2.0
+- R 3.2.0 or higher.
 - R packages `methods` and `knitr`, available through the [Comprehensive R Archive Network (CRAN](https://cran.r-project.org/).
 - R [package `fbseq`](https://github.com/wlandau/fbseq), available through GitHub.
 
