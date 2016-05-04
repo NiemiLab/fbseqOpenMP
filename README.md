@@ -1,12 +1,12 @@
 # fbseqSerial
 
-`fbseqSerial` is an internal engine of the [`fbseq` package](https://github.com/wlandau/fbseq). This package is recommended for timing purposes only because the MCMC is slow. For serious computation, see the `fbseqCUDA` package, also on Github.
+The [`fbseqSerial`](https://github.com/wlandau/fbseqSerial) package is an internal backend of the [`fbseq`](https://github.com/wlandau/fbseq) package that runs the Markov chain Monte Carlo (MCMC) procedure behind the scenes. It should install on most machines, but it is slow for large datasets. For a faster backend, which uses parallel computing via CUDA-capable general-purpose graphics processing units (GPUs), use the [`fbseqCUDA`](https://github.com/wlandau/fbseqCUDA) package.
 
 # System requirements
 
 - R $\ge$ 3.2.0
 - R packages `methods` and `knitr`, available through the [Comprehensive R Archive Network (CRAN](https://cran.r-project.org/).
-- R [package `fbseq`](https://github.com/wlandau/fbseq), available through GitHub. (See the [`fbseq` package tutorial vignette](https://github.com/wlandau/fbseq/blob/master/vignettes/model.html) for installation instructions. For best viewing, download the html vignette to your desktop and open it with a browser).
+- R [package `fbseq`](https://github.com/wlandau/fbseq), available through GitHub.
 
 # Installation
 

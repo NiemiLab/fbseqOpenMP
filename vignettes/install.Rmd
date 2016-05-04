@@ -20,7 +20,7 @@ vignette: >
 
 - R $\ge$ 3.2.0
 - R packages `methods` and `knitr`, available through the [Comprehensive R Archive Network (CRAN](https://cran.r-project.org/).
-- R [package `fbseq`](https://github.com/wlandau/fbseq), available through GitHub. (See the [`fbseq` package tutorial vignette](https://github.com/wlandau/fbseq/blob/master/vignettes/model.html) for installation instructions. For best viewing, download the html vignette to your desktop and open it with a browser).
+- R [package `fbseq`](https://github.com/wlandau/fbseq), available through GitHub.
 
 # Installation
 
