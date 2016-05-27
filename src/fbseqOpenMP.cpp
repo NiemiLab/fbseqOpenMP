@@ -36,7 +36,7 @@
 #include "stage/mcmc.h"
 #include "stage/end.h"
 
-extern "C" SEXP fbseqSerial(SEXP arg){
+extern "C" SEXP fbseqOpenMP(SEXP arg){
   SEXP hh = PROTECT(duplicate(arg));
 
   if(li(hh, "verbose")[0])

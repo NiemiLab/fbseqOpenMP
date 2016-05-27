@@ -12,7 +12,7 @@
 
 <meta name="date" content="2015-01-01" />
 
-<title>fbseqSerial package installation guide</title>
+<title>fbseqOpenMP package installation guide</title>
 
 
 
@@ -26,7 +26,7 @@
 
 
 <div id="header">
-<h1 class="title"><code>fbseqSerial</code> package installation guide</h1>
+<h1 class="title"><code>fbseqOpenMP</code> package installation guide</h1>
 <h4 class="author"><em>Will Landau</em></h4>
 <h4 class="date"><em>2015</em></h4>
 </div>
@@ -45,29 +45,29 @@
 
 <div id="purpose" class="section level1">
 <h1><span class="header-section-number">1</span> Purpose</h1>
-<p><code>fbseqSerial</code> is an internal engine of the <a href="https://github.com/wlandau/fbseq"><code>fbseq</code> package</a>. This package is recommended for timing purposes only because the MCMC is slow. For serious computation, see the <code>fbseqCUDA</code> package, also on Github.</p>
+<p><code>fbseqOpenMP</code> is an internal engine of the <a href="https://github.com/wlandau/fbseq"><code>fbseq</code> package</a>. This package uses OpenMP to for parallel computing. For serious parallelism, see the <code>fbseqCUDA</code> package, also on Github.</p>
 </div>
 <div id="system-requirements" class="section level1">
 <h1><span class="header-section-number">2</span> System requirements</h1>
-<p>The required R version and R packages listed in the “Depends”, “Imports”, and “Suggests” fields of the “package’s <a href="https://github.com/wlandau/fbseqSerial/blob/master/DESCRIPTION">DESCRIPTION</a> file.</p>
+<p>The required R version and R packages listed in the “Depends”, “Imports”, and “Suggests” fields of the “package’s <a href="https://github.com/wlandau/fbseqOpenMP/blob/master/DESCRIPTION">DESCRIPTION</a> file.</p>
 </div>
 <div id="installation" class="section level1">
 <h1><span class="header-section-number">3</span> Installation</h1>
 <div id="option-1-install-a-stable-release-recommended." class="section level2">
 <h2><span class="header-section-number">3.1</span> Option 1: install a stable release (recommended).</h2>
-<p>Navigate to a <a href="https://github.com/wlandau/fbseqSerial/releases">list of stable releases</a> on the project’s <a href="https://github.com/wlandau/fbseqSerial">GitHub page</a>. Download the desired <code>tar.gz</code> bundle, then install it either with <code>install.packages(..., repos = NULL, type=&quot;source&quot;)</code> from within R <code>R CMD INSTALL</code> from the Unix/Linux command line.</p>
+<p>Navigate to a <a href="https://github.com/wlandau/fbseqOpenMP/releases">list of stable releases</a> on the project’s <a href="https://github.com/wlandau/fbseqOpenMP">GitHub page</a>. Download the desired <code>tar.gz</code> bundle, then install it either with <code>install.packages(..., repos = NULL, type=&quot;source&quot;)</code> from within R <code>R CMD INSTALL</code> from the Unix/Linux command line.</p>
 </div>
 <div id="option-2-use-install_github-to-install-the-development-version." class="section level2">
 <h2><span class="header-section-number">3.2</span> Option 2: use <code>install_github</code> to install the development version.</h2>
 <p>For this option, you need the <code>devtools</code> package, available from CRAN or GitHub. Open R and run</p>
 <pre><code>library(devtools)
-install_github(&quot;wlandau/fbseqSerial&quot;)</code></pre>
+install_github(&quot;wlandau/fbseqOpenMP&quot;)</code></pre>
 </div>
 <div id="option-3-build-the-development-version-from-the-source." class="section level2">
 <h2><span class="header-section-number">3.3</span> Option 3: build the development version from the source.</h2>
 <p>Open a command line program such as Terminal in Mac/Linux and enter the following commands.</p>
-<pre><code>git clone git@github.com:wlandau/fbseqSerial.git
-R CMD build fbseqSerial
+<pre><code>git clone git@github.com:wlandau/fbseqOpenMP.git
+R CMD build fbseqOpenMP
 R CMD INSTALL ...</code></pre>
 <p>where <code>...</code> is replaced by the name of the tarball produced by <code>R CMD build</code>.</p>
 </div>

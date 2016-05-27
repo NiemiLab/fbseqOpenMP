@@ -39,7 +39,7 @@ void xi_kernel1(chain_t *dd, int prior, int l, int sampler){
 
       default:
         dd->xi[I(l, g)] = 1.0;
-        return;
+        continue;
     }
 
     args = sampler_wrap(dd, args);

@@ -1,4 +1,4 @@
-#' @useDynLib fbseqSerial
+#' @useDynLib fbseqOpenMP
 #' @import fbseq
 #' @import methods
 NULL
