@@ -11,8 +11,10 @@
 
 void serial_reduce_aux(chain_t *dd){
   int g;
-  for(g = 1; g < dd->G; ++g)
-    dd->aux[0] = dd->aux[0] + dd->aux[g];
+  double out = 0.0;
+  #pragma omp parallel for reduction(+:out)
+  for(g = 0; g < dd->G; ++g) out += dd->aux[g];
+  dd->aux[0] = out;
 }
 
 #endif // UTIL_CUDA_USAGE_H

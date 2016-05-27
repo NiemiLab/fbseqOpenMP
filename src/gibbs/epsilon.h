@@ -5,6 +5,7 @@ void epsilon_kernel1(chain_t *dd, int sampler){
   int n, g;
 
   for(n = IDY; n < dd->N; n += NTHREADSY){
+    #pragma omp parallel for
     for(g = IDX; g < dd->G; g += NTHREADSX){
       args_t args;
       args.idx = I(n, g);

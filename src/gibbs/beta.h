@@ -18,6 +18,7 @@ double beta_coef(chain_t *dd, int l, int g, double x){
 void beta_kernel1(chain_t *dd, int l, int sampler){
   int g, j, n;
 
+  #pragma omp parallel for
   for(g = IDX; g < dd->G; g += NTHREADSX){
     args_t args;
     args.idx = g;

@@ -1,6 +1,7 @@
 #ifndef UTIL_INCLUDE_H
 #define UTIL_INCLUDE_H
 
+#include <omp.h>
 #include <R.h>
 #include <Rdefines.h>
 #include <Rinternals.h>
