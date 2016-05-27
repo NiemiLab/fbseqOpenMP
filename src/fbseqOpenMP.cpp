@@ -38,9 +38,7 @@
 
 extern "C" SEXP fbseqOpenMP(SEXP arg){
   SEXP hh = PROTECT(duplicate(arg));
-
-  if(li(hh, "verbose")[0])
-    Rprintf("Loading MCMC.\n");
+  if(li(hh, "verbose")[0]) Rprintf("Loading MCMC.\n");
 
   chain_t *hd = alloc_hd(hh);
   hh2hd(hh, hd);
@@ -48,6 +46,7 @@ extern "C" SEXP fbseqOpenMP(SEXP arg){
   chain_t *dd;
   dd = (chain_t*) calloc(1, sizeof(chain_t));
   memcpy(dd, hd, sizeof(chain_t));
+  if(li(hh, "verbose")[0]) Rprintf("Using %d OpenMP threads.\n", dd->threads);
 
   estimates_initialize(hh, hd, dd);
 

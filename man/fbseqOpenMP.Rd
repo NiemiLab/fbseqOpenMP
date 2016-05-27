@@ -4,13 +4,15 @@
 \alias{fbseqOpenMP}
 \title{Function \code{fbseqOpenMP}}
 \usage{
-fbseqOpenMP(chain)
+fbseqOpenMP(chain, threads = 1)
 }
 \arguments{
 \item{chain}{object of type \code{Chain}. This \code{chain} argument could be
 a newly created \code{Chain} object from \code{Chain(...)}. Alternatively,
 if \code{chain} is the output from a previous call to \code{fbseq(...)},
 then the function will continue the MCMC from where it left off.}
+
+\item{threads}{number of threads}
 }
 \value{
 a \code{Chain} object with updated parameter values. You can feed

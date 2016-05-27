@@ -11,6 +11,9 @@
 #' a newly created \code{Chain} object from \code{Chain(...)}. Alternatively,
 #' if \code{chain} is the output from a previous call to \code{fbseq(...)},
 #' then the function will continue the MCMC from where it left off.
-fbseqOpenMP = function(chain){
-  Chain(slots = .Call("fbseqOpenMP", PACKAGE = "fbseqOpenMP", s4list(chain)))
+#' @param threads number of threads
+fbseqOpenMP = function(chain, threads = 1){
+  args = s4list(chain)
+  args$threads = as.integer(threads)
+  Chain(slots = .Call("fbseqOpenMP", PACKAGE = "fbseqOpenMP", args))
 }

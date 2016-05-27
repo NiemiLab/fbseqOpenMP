@@ -5,7 +5,7 @@ void gamma_kernel1(chain_t *dd, int sampler){
   int n, g;
   double sum, z;
 
-  #pragma omp parallel for
+  #pragma omp parallel for num_threads(dd->threads)
   for(g = IDX; g < dd->G; g += NTHREADSX){
 
     sum = 0.0;

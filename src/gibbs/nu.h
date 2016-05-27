@@ -37,7 +37,7 @@ void nuSample(SEXP hh, chain_t *hd, chain_t *dd){
 //  thrust::device_ptr<double> aux(hd->aux);
 //  double sum = thrust::reduce(aux, aux + li(hh, "G")[0]);
 //  CUDA_CALL(cudaMemcpy(hd->aux, &sum, sizeof(double), cudaMemcpyHostToDevice));
-  serial_reduce_aux(dd);
+  reduce_aux(dd);
 
   nu_kernel2(dd, li(hh, "nuSampler")[0]);
 }

@@ -41,7 +41,7 @@ void sigmaSquaredSample(SEXP hh, chain_t *hd, chain_t *dd){
 //    thrust::device_ptr<double> tmp(hd->aux);
 //    double sum = thrust::reduce(tmp, tmp + li(hh, "G")[0]);
 //    CUDA_CALL(cudaMemcpy(hd->aux, &sum, sizeof(double), cudaMemcpyHostToDevice));
-    serial_reduce_aux(dd);
+    reduce_aux(dd);
 
     sigmaSquared_kernel2(dd, l, li(hh, "sigmaSquaredSampler")[0]);
   }

@@ -3,7 +3,7 @@
 
 void xi_kernel1(chain_t *dd, int prior, int l, int sampler){
   int g;
-  #pragma omp parallel for
+  #pragma omp parallel for num_threads(dd->threads)
   for(g = IDX; g < dd->G; g += NTHREADSX){
 
     args_t args;
