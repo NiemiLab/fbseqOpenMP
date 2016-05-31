@@ -9,6 +9,17 @@
 #define MAX(a, b) (a > b ? a : b)
 #define MIN(a, b) (a < b ? a : b)
 
+extern "C" SEXP OpenMP_working(){
+  int i, threads;
+  #pragma omp parallel for num_threads(2)
+  for(i = 0; i < 2; ++i)
+    threads = omp_get_num_threads();
+  SEXP result = PROTECT(allocVector(INTSXP, 1));
+  INTEGER(result)[0] = threads > 1;
+  UNPROTECT(1);
+  return result;
+}
+
 void check_omp_runtime(int requested_threads){
   int i, threads;
   if(!USING_OPENMP){
