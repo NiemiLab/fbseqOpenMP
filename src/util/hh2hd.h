@@ -45,6 +45,8 @@ void hh2hd(SEXP hh, chain_t *hd){
   memcpy(hd->tau, lr(hh, "tauStart"), sizeof(double));
   memcpy(hd->theta, lr(hh, "thetaStart"), L * sizeof(double));
   memcpy(hd->xi, lr(hh, "xiStart"), L * G * sizeof(double));
+
+  hd->threads = li(hh, "threads")[0];
 }
 
 #endif // UTIL_HH2HD_H

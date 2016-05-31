@@ -90,7 +90,7 @@ typedef struct {
          *D,
          *loglik;
 
-  int adapt, deviceIndex, m;
+  int adapt, deviceIndex, m, threads;
 } chain_t;
 
 #endif // UTIL_CHAIN_H

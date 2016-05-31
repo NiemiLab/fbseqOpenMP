@@ -2,7 +2,7 @@
 #include "util/config.h"
 #include "util/element.h"
 #include "util/chain.h"
-#include "util/cuda_usage.h"
+#include "util/parallel_usage.h"
 #include "util/alloc_hd.h"
 #include "util/free_hd.h"
 #include "util/hd2hh.h"
@@ -13,7 +13,7 @@
 #include "util/estimates_update.h"
 #include "util/xbeta.h"
 #include "util/priors.h"
-#include "util/curand_usage.h"
+#include "util/rand_usage.h"
 #include "util/reset_starts.h"
 #include "util/set.h"
 
@@ -36,11 +36,13 @@
 #include "stage/mcmc.h"
 #include "stage/end.h"
 
-extern "C" SEXP fbseqSerial(SEXP arg){
+extern "C" SEXP fbseqOpenMP(SEXP arg){
   SEXP hh = PROTECT(duplicate(arg));
 
-  if(li(hh, "verbose")[0])
+  if(li(hh, "verbose")[0]){
+    check_omp_runtime(li(hh, "threads")[0]);
     Rprintf("Loading MCMC.\n");
+  }
 
   chain_t *hd = alloc_hd(hh);
   hh2hd(hh, hd);

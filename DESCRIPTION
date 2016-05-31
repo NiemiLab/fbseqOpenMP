@@ -1,8 +1,8 @@
-Package: fbseqSerial
-Title: fbseqSerial
-Description: Internal MCMC engine for fbseq, implemented without parallel
+Package: fbseqOpenMP
+Title: fbseqOpenMP
+Description: Internal MCMC engine for fbseq, implemented with OpenMP for parallel
     computing.
-URL: https://github.com/wlandau/fbseqSerial
+URL: https://github.com/wlandau/fbseqOpenMP
 Version: 0.0
 Author: Will Landau <will.landau@gmail.com>
 Maintainer: Will Landau <will.landau@gmail.com>

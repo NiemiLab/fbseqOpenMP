@@ -51,6 +51,7 @@ void estimates_initialize_kernel4(chain_t *dd){
 
 void estimates_initialize_kernel5(chain_t *dd){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaPostMean[id] = 0.0;
     for(l = 0; l < dd->L; ++l){
@@ -64,6 +65,7 @@ void estimates_initialize_kernel5(chain_t *dd){
 
 void estimates_initialize_kernel6(chain_t *dd){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaPostMeanSquare[id] = 0.0;
     for(l = 0; l < dd->L; ++l){
@@ -77,6 +79,7 @@ void estimates_initialize_kernel6(chain_t *dd){
 
 void estimates_initialize_kernel7(chain_t *dd){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaTune[id] = INIT_TUNE;
     for(l = 0; l < dd->L; ++l){
@@ -90,6 +93,7 @@ void estimates_initialize_kernel7(chain_t *dd){
 
 void estimates_initialize_kernel8(chain_t *dd){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaTuneAux[id] = INIT_TUNE_AUX;
     for(l = 0; l < dd->L; ++l){
@@ -103,6 +107,7 @@ void estimates_initialize_kernel8(chain_t *dd){
 
 void estimates_initialize_kernel9(chain_t *dd){
   int g, p;
+  #pragma omp parallel for num_threads(dd->threads) private(p)
   for(g = IDX; g < dd->G; g += NTHREADSX)
     for(p = 0; p < dd->P; ++p)
       dd->probs[I(p, g)] = 0.0;

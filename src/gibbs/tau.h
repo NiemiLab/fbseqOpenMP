@@ -3,6 +3,7 @@
 
 void tau_kernel1(chain_t *dd){
   int g;
+  #pragma omp parallel for num_threads(dd->threads)
   for(g = IDX; g < dd->G; g += NTHREADSX)
     dd->aux[g] = 1.0/dd->gamma[g];
 }
@@ -36,7 +37,7 @@ void tauSample(SEXP hh, chain_t *hd, chain_t *dd){
 //  thrust::device_ptr<double> tmp(hd->aux);
 //  double sum = thrust::reduce(tmp, tmp + li(hh, "G")[0]);
 //  CUDA_CALL(cudaMemcpy(hd->aux, &sum, sizeof(double), cudaMemcpyHostToDevice));
-  serial_reduce_aux(dd);
+  reduce_aux(dd);
 
   tau_kernel2(dd, li(hh, "tauSampler")[0]);
 }

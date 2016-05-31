@@ -3,12 +3,14 @@
 
 void theta_kernel1(chain_t *dd, int l){
   int g;
+  #pragma omp parallel for num_threads(dd->threads)
   for(g = IDX; g < dd->G; g += NTHREADSX)
     dd->aux[g] = 1.0 / dd->xi[I(l, g)];
 }
 
 void theta_kernel2(chain_t *dd, int l){
   int g;
+  #pragma omp parallel for num_threads(dd->threads)
   for(g = IDX; g < dd->G; g += NTHREADSX)
     dd->aux[g] = dd->beta[I(l, g)] / dd->xi[I(l, g)];
 }
@@ -27,14 +29,14 @@ void thetaSample(SEXP hh, chain_t *hd, chain_t *dd){
     theta_kernel1(dd, l);
 //    thrust::device_ptr<double> tmpA(hd->aux);
 //    double A0 = thrust::reduce(tmpA, tmpA + G);
-    serial_reduce_aux(dd);
+    reduce_aux(dd);
     double A0;
     memcpy(&A0, hd->aux, sizeof(double));
 
     theta_kernel2(dd, l);
 //    thrust::device_ptr<double> tmpB(hd->aux);
 //    double B0 = thrust::reduce(tmpB, tmpB + G);
-    serial_reduce_aux(dd);
+    reduce_aux(dd);
     double B0;
     memcpy(&B0, hd->aux, sizeof(double));
 

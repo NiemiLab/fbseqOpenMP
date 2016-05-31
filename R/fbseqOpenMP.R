@@ -1,5 +1,5 @@
-#' @title Function \code{fbseqSerial}
-#' @description Calls the serial C code behind the \code{fbseq()} function
+#' @title Function \code{fbseqOpenMP}
+#' @description Calls the OpenMP C code behind the \code{fbseq()} function
 #' in the \code{fbseq} package.
 #' 
 #' @export
@@ -11,6 +11,9 @@
 #' a newly created \code{Chain} object from \code{Chain(...)}. Alternatively,
 #' if \code{chain} is the output from a previous call to \code{fbseq(...)},
 #' then the function will continue the MCMC from where it left off.
-fbseqSerial = function(chain){
-  Chain(slots = .Call("fbseqSerial", PACKAGE = "fbseqSerial", s4list(chain)))
+#' @param threads number of threads
+fbseqOpenMP = function(chain, threads = 1){
+  args = s4list(chain)
+  args$threads = as.integer(threads)
+  Chain(slots = .Call("fbseqOpenMP", PACKAGE = "fbseqOpenMP", args))
 }

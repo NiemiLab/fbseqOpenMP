@@ -27,6 +27,7 @@ void estimates_scale_kernel2(chain_t *dd, double iterations){
 
 void estimates_scale_kernel3(chain_t *dd, double iterations){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaPostMean[id]/= iterations;
     for(l = 0; l < dd->L; ++l){
@@ -40,6 +41,7 @@ void estimates_scale_kernel3(chain_t *dd, double iterations){
 
 void estimates_scale_kernel4(chain_t *dd, double iterations){
   int id, l, n;
+  #pragma omp parallel for num_threads(dd->threads) private(l, n)
   for(id = IDX; id < dd->G; id += NTHREADSX){
     dd->gammaPostMeanSquare[id]/= iterations;
     for(l = 0; l < dd->L; ++l){
@@ -53,6 +55,7 @@ void estimates_scale_kernel4(chain_t *dd, double iterations){
 
 void estimates_scale_kernel5(chain_t *dd, double iterations){
   int g, p;
+  #pragma omp parallel for num_threads(dd->threads) private(p)
   for(g = IDX; g < dd->G; g += NTHREADSX)
     for(p = 0; p < dd->P; ++p)
       dd->probs[I(p, g)] /= iterations;
