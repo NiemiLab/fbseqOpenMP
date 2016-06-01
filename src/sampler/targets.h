@@ -69,10 +69,12 @@ double ltarget_xi_t(chain_t *dd, args_t args, double x){
   return ret;
 }
 
+// Sample 1/xi rather than xi because xi is so large.
 double ltarget_xi_horseshoe(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
   if(x > args.lowerbound)
-    ret = -log(x * (1.0 + x)) - args.A / x;
+//    ret = -log(x * (1.0 + x)) - args.A / x;
+    ret = -log(1.0 + x) - args.A * x;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
