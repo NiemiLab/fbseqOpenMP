@@ -34,9 +34,9 @@ void xi_kernel1(chain_t *dd, int prior, int l, int sampler){
 
       case PRIOR_HORSESHOE:
         args.target_type = LTARGET_XI_HORSESHOE;
-        args.x0 = 1.0/args.x0;
         args.A = z;
-        break;
+        args = slice_horseshoe(dd, args);
+        continue;
 
       default:
         dd->xi[I(l, g)] = 1.0;
@@ -44,7 +44,7 @@ void xi_kernel1(chain_t *dd, int prior, int l, int sampler){
     }
 
     args = sampler_wrap(dd, args);
-    dd->xi[I(l, g)] = args.target_type == LTARGET_XI_HORSESHOE ? 1/args.x : args.x;
+    dd->xi[I(l, g)] = args.x;
     dd->xiTune[I(l, g)] = args.tune;
     dd->xiTuneAux[I(l, g)] = args.tuneAux;
   }
