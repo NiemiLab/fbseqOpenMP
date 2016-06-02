@@ -36,6 +36,7 @@ void xi_kernel1(chain_t *dd, int prior, int l, int sampler){
         args.target_type = LTARGET_XI_HORSESHOE;
         args.A = z;
         args = slice_horseshoe(dd, args);
+        dd->xi[I(l, g)] = args.x;
         continue;
 
       default:
