@@ -2,12 +2,15 @@
 #define UTIL_ESTIMATES_SAVE_H
 
 void estimates_save(SEXP hh, chain_t *hd){
-  int G = (double) li(hh, "G")[0],
+  int C = (double) li(hh, "C")[0],
+      G = (double) li(hh, "G")[0],
       L = (double) li(hh, "L")[0],
       N = (double) li(hh, "N")[0],
       P = (double) li(hh, "P")[0];
 
   memcpy(lr(hh, "probs"), hd->probs, P * G * sizeof(double));
+  memcpy(lr(hh, "contrastsPostMean"), hd->contrastsPostMean, C * G * sizeof(double));
+  memcpy(lr(hh, "contrastsPostMeanSquare"), hd->contrastsPostMeanSquare, C * G * sizeof(double));
 
   memcpy(lr(hh, "betaPostMean"), hd->betaPostMean, L * G * sizeof(double));
   memcpy(lr(hh, "epsilonPostMean"), hd->epsilonPostMean, N * G * sizeof(double));

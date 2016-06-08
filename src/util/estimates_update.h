@@ -73,16 +73,31 @@ void estimates_update_kernel5(chain_t *dd, int m){
   for(g = IDX; g < dd->G; g += NTHREADSX){
     for(p = 0; p < dd->P; ++p){
       truth = 1;
-
       for(c = 0; c < dd->C; ++c){
         if(!dd->propositions[Ipropositions(p, c)]) continue;
         contrast = 0.0;
         for(l = 0; l < dd->L; ++l)
-          contrast = pcs(dd->contrasts[Icontrasts(c, l)] * dd->beta[I(l, g)], contrast, l + 1);
+          contrast += dd->contrasts[Icontrasts(c, l)] * dd->beta[I(l, g)];
         truth *= (contrast > dd->bounds[c]);
       }
+      dd->probs[I(p, g)] = pcs((double) truth, dd->probs[I(p, g)], m);
+    }
+  }
+}
 
-      dd->probs[I(p, g)] = pcs(truth, dd->probs[I(p, g)], m);
+
+void estimates_update_kernel6(chain_t *dd, int m){
+  int c, g, l;
+  double contrast;
+  #pragma omp parallel for num_threads(dd->threads) private(c, l, contrast)
+  for(g = IDX; g < dd->G; g += NTHREADSX){
+    for(c = 0; c < dd->C; ++c){
+      contrast = 0.0;
+      for(l = 0; l < dd->L; ++l){
+        contrast += dd->contrasts[Icontrasts(c, l)] * dd->beta[I(l, g)];
+      }
+      dd->contrastsPostMean[I(c, g)] = pcs(contrast, dd->contrastsPostMean[I(c, g)], m);
+      dd->contrastsPostMeanSquare[I(c, g)] = pcs(contrast*contrast, dd->contrastsPostMeanSquare[I(c, g)], m);
     }
   }
 }
@@ -93,6 +108,7 @@ void estimates_update(SEXP hh, chain_t *hd, chain_t *dd, int m){
   estimates_update_kernel3(dd, m);
   estimates_update_kernel4(dd, m);
   estimates_update_kernel5(dd, m);
+  estimates_update_kernel6(dd, m);
 }
 
 #endif // UTIL_ESTIMATES_UPDATE_H

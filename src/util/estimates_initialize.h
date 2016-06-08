@@ -106,11 +106,16 @@ void estimates_initialize_kernel8(chain_t *dd){
 }
 
 void estimates_initialize_kernel9(chain_t *dd){
-  int g, p;
+  int g, c, p;
   #pragma omp parallel for num_threads(dd->threads) private(p)
-  for(g = IDX; g < dd->G; g += NTHREADSX)
+  for(g = IDX; g < dd->G; g += NTHREADSX){
     for(p = 0; p < dd->P; ++p)
       dd->probs[I(p, g)] = 0.0;
+    for(c = 0; c < dd->C; ++c){
+      dd->contrastsPostMean[I(c, g)] = 0.0;
+      dd->contrastsPostMeanSquare[I(c, g)] = 0.0;
+    }
+  }
 }
 
 void estimates_initialize(SEXP hh, chain_t *hd, chain_t *dd){

@@ -21,6 +21,8 @@ chain_t *alloc_hd(SEXP hh){
   hd->designUnique = (double*) calloc(L * N , sizeof(double));
   hd->designUniqueN = (int*) calloc(L , sizeof(int));
   hd->probs = (double*) calloc(P * G , sizeof(double));
+  hd->contrastsPostMean = (double*) calloc(C * G , sizeof(double));
+  hd->contrastsPostMeanSquare = (double*) calloc(C * G , sizeof(double));
   hd->seeds = (int*) calloc(N * G , sizeof(int));
 
   hd->a = (double*) calloc(1, sizeof(double));

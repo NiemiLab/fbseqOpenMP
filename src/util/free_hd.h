@@ -14,6 +14,8 @@ void free_hd(chain_t *hd){
   free(hd->designUnique);
   free(hd->designUniqueN);
   free(hd->probs);
+  free(hd->contrastsPostMean);
+  free(hd->contrastsPostMeanSquare);
   free(hd->seeds);
 
   free(hd->a);

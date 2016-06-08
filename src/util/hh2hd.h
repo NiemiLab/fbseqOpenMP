@@ -25,6 +25,8 @@ void hh2hd(SEXP hh, chain_t *hd){
   memcpy(hd->designUnique, lr(hh, "designUnique"), L * N * sizeof(double));
   memcpy(hd->designUniqueN, li(hh, "designUniqueN"), L * sizeof(int));
   memcpy(hd->probs, lr(hh, "probs"), P * G * sizeof(double));
+  memcpy(hd->contrastsPostMean, lr(hh, "contrastsPostMean"), C * G * sizeof(double));
+  memcpy(hd->contrastsPostMeanSquare, lr(hh, "contrastsPostMeanSquare"), C * G * sizeof(double));
   memcpy(hd->seeds, li(hh, "seeds"), N * G * sizeof(int));
 
   memcpy(hd->a, lr(hh, "a"), sizeof(double));
