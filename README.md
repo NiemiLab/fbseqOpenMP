@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/22809/wlandau/fbseqOpenMP.svg)](https://zenodo.org/badge/latestdoi/22809/wlandau/fbseqOpenMP)
+
 # fbseqOpenMP
 
 The [`fbseqOpenMP`](https://github.com/wlandau/fbseqOpenMP) package is an internal backend of the [`fbseq`](https://github.com/wlandau/fbseq) package that runs the Markov chain Monte Carlo (MCMC) procedure behind the scenes. It should install on most machines that have OpenMP, but it is slow for large datasets. For a faster backend, which uses parallel computing via CUDA-capable general-purpose graphics processing units (GPUs), use the [`fbseqCUDA`](https://github.com/wlandau/fbseqCUDA) package.
