@@ -1,13 +1,13 @@
 #ifndef UTIL_INCLUDE_H
 #define UTIL_INCLUDE_H
 
+#include <cmath>
 #include <R.h>
 #include <Rdefines.h>
 #include <Rinternals.h>
 #include <Rmath.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <cmath>
 
 #ifdef _OPENMP
    #define USING_OPENMP 1
