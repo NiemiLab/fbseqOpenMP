@@ -1,7 +1,6 @@
 #ifndef UTIL_INCLUDE_H
 #define UTIL_INCLUDE_H
 
-#include <cmath>
 #include <R.h>
 #include <Rdefines.h>
 #include <Rinternals.h>
