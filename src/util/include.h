@@ -7,6 +7,7 @@
 #include <Rmath.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <cmath.h>
 
 #ifdef _OPENMP
    #define USING_OPENMP 1
