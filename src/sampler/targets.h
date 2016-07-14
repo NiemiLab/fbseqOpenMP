@@ -16,6 +16,7 @@ double ltarget_beta(chain_t *dd, args_t args, double x){
   ret = args.A*x - args.B*z*z;
   for(j = 0; j < args.designUniqueN; ++j)
     ret -= exp(dd->D[I(j, args.idx)]*x) * dd->aux[I(j, args.idx)];
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
@@ -25,6 +26,7 @@ double ltarget_epsilon(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
   double z = (x - args.C);
   ret = args.A*x - args.B*z*z - args.D*exp(x);
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
@@ -46,6 +48,7 @@ double ltarget_nu(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
   if(x > args.lowerbound & x < args.D)
     ret = args.C * (-lgamma(0.5 * x) + 0.5 * x * log(args.A*x)) - args.B*x;
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
@@ -55,6 +58,7 @@ double ltarget_xi_laplace(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
   if(x > args.lowerbound)
     ret = -0.5 * log(x) - args.A / x - args.B * x;
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
@@ -64,6 +68,7 @@ double ltarget_xi_t(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
   if(x > args.lowerbound)
     ret = -args.A * log(x) - args.B / x;
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
@@ -75,6 +80,7 @@ double ltarget_xi_horseshoe(chain_t *dd, args_t args, double x){
   if(x > args.lowerbound)
 //    ret = -log(x * (1.0 + x)) - args.A / x;
     ret = -log(1.0 + x) - args.A * x;
+  using namespace std;
   if(isnan(ret))
     ret = -INFINITY;
   return ret;
