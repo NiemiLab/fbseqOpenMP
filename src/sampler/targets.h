@@ -46,7 +46,7 @@ double ltarget_inv_gamma(chain_t *dd, args_t args, double x){
 
 double ltarget_nu(chain_t *dd, args_t args, double x){
   double ret = -INFINITY;
-  if(x > args.lowerbound & x < args.D)
+  if((x > args.lowerbound) & (x < args.D))
     ret = args.C * (-lgamma(0.5 * x) + 0.5 * x * log(args.A*x)) - args.B*x;
   using namespace std;
   if(isnan(ret))
